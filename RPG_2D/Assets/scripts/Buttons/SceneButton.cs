@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class SceneButton : MonoBehaviour
 {
-   public void ChangeScene()
+   public void ChangetoGameScene()
     {
         SceneManager.LoadScene(1);
     }
