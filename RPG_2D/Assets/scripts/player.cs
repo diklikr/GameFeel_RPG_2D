@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class player : MonoBehaviour
 {
@@ -8,13 +9,38 @@ public class player : MonoBehaviour
     [SerializeField]
     private float _health = 10f;
 
+    public PlayerState pState;
 
     public Transform groundCheck;       // assign a child Transform at the player's feet
     public float groundCheckRadius = 0.1f;
     public LayerMask groundLayer;       // set to your ground layer(s)
 
     Rigidbody2D rb;
+    private void UpdateState(PlayerState state)
+    {
+        pState = state;
 
+        switch (state)
+        {
+            case PlayerState.Idle:
+                break;
+
+            case PlayerState.Walk:
+                break;
+
+            case PlayerState.Jump:
+             
+                break;
+
+            case PlayerState.Attack:
+               
+                break;
+
+            case PlayerState.Dead:
+                SceneManager.LoadScene(2);
+                break;
+        }
+    }
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -40,8 +66,7 @@ public class player : MonoBehaviour
 
         if (_health <= 0f)
         {
-            _health = 0f;
-            Debug.Log("Player has died.");
+            pState = PlayerState.Dead;
         }
     }
     bool IsGrounded()
