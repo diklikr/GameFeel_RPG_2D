@@ -1,22 +1,31 @@
 fileFormatVersion: 2
-guid: 22fb3629b18abbe49a477c0f61558067
+guid: 6ac7965a4d0608547a13b6ea35fb22ba
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4599746485825725043
-    second: Bullet_Dodge_0
+      213: -837275676153275556
+    second: Attack_2_0
   - first:
-      213: -7127676917412048720
-    second: Bullet_Dodge_1
+      213: -8404040051688745268
+    second: Attack_2_1
   - first:
-      213: -2156885596668144769
-    second: Bullet_Dodge_2
+      213: -3526194569594660169
+    second: Attack_2_2
   - first:
-      213: 2074554628257359040
-    second: Bullet_Dodge_3
+      213: 950650993592285724
+    second: Attack_2_3
   - first:
-      213: 3006316720510834853
-    second: Bullet_Dodge_4
+      213: 6371639423800154214
+    second: Attack_2_4
+  - first:
+      213: 3517966781153112992
+    second: Attack_2_5
+  - first:
+      213: -7018801485362641992
+    second: Attack_2_6
+  - first:
+      213: -4083314108108747639
+    second: Attack_2_7
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -112,111 +121,177 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Bullet_Dodge_0
+      name: Attack_2_0
       rect:
         serializedVersion: 2
-        x: 49
+        x: 39
         y: 0
-        width: 40
-        height: 69
+        width: 56
+        height: 83
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: d8d918f01fa6a20c0800000000000000
-      internalID: -4599746485825725043
+      spriteID: 42ec27f9382e54c43a97a2f3edabd79a
+      internalID: -1342528138
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bullet_Dodge_1
+      name: Attack_2_1
       rect:
         serializedVersion: 2
-        x: 174
+        x: 168
         y: 0
-        width: 39
-        height: 69
+        width: 56
+        height: 84
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 0b057ef8b97651d90800000000000000
-      internalID: -7127676917412048720
+      spriteID: e7efcdbf7127f244a85b38d867446e8b
+      internalID: 1329471165
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bullet_Dodge_2
+      name: Attack_2_2
       rect:
         serializedVersion: 2
-        x: 292
+        x: 301
         y: 0
-        width: 47
-        height: 69
+        width: 51
+        height: 79
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: f73507d3af33112e0800000000000000
-      internalID: -2156885596668144769
+      spriteID: d9d2fcc2078ee934f90b3ccf5f8986a3
+      internalID: 836438423
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bullet_Dodge_3
+      name: Attack_2_3
       rect:
         serializedVersion: 2
-        x: 418
+        x: 430
         y: 0
-        width: 47
-        height: 70
+        width: 65
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 0c42c64617c4acc10800000000000000
-      internalID: 2074554628257359040
+      spriteID: 7438aa31930386d47964ab7a367e53ac
+      internalID: 973740970
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bullet_Dodge_4
+      name: Attack_2_4
       rect:
         serializedVersion: 2
-        x: 543
+        x: 556
+        y: 0
+        width: 82
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b0e836008819a1439cb48e4cd3313bf
+      internalID: -1432389546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack_2_5
+      rect:
+        serializedVersion: 2
+        x: 679
+        y: 0
+        width: 85
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c904dac0f44b2014a86d9763de9c5d0d
+      internalID: -59887740
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack_2_6
+      rect:
+        serializedVersion: 2
+        x: 758
+        y: 6
+        width: 5
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78a2bbf5a970a14468ac034f0daa645d
+      internalID: 272863519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack_2_7
+      rect:
+        serializedVersion: 2
+        x: 803
         y: 0
         width: 49
-        height: 70
+        height: 86
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 5a89d50112598b920800000000000000
-      internalID: 3006316720510834853
+      spriteID: 8ed1372014615fe44b5ff84d17d5e5c6
+      internalID: 945552188
       vertices: []
       indices: 
       edges: []
@@ -225,7 +300,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 51cbd9ec903fc444a80c4f1a5c18815d
     internalID: 0
     vertices: []
     indices: 
@@ -235,11 +310,14 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Bullet_Dodge_0: -4599746485825725043
-      Bullet_Dodge_1: -7127676917412048720
-      Bullet_Dodge_2: -2156885596668144769
-      Bullet_Dodge_3: 2074554628257359040
-      Bullet_Dodge_4: 3006316720510834853
+      Attack_2_0: -1342528138
+      Attack_2_1: 1329471165
+      Attack_2_2: 836438423
+      Attack_2_3: 973740970
+      Attack_2_4: -1432389546
+      Attack_2_5: -59887740
+      Attack_2_6: 272863519
+      Attack_2_7: 945552188
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

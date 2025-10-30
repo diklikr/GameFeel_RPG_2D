@@ -5,7 +5,8 @@ public class player : MonoBehaviour
 {
     public float moveSpeed = 5f;
     public float jumpForce = 12f;
-
+    [SerializeField]
+    private float damage = 2;
     [SerializeField]
     private float _health = 10f;
 
@@ -14,8 +15,10 @@ public class player : MonoBehaviour
     public Transform groundCheck;       // assign a child Transform at the player's feet
     public float groundCheckRadius = 0.1f;
     public LayerMask groundLayer;       // set to your ground layer(s)
+    public Animator animator;
 
     Rigidbody2D rb;
+    zombie z;
     private void UpdateState(PlayerState state)
     {
         pState = state;
@@ -23,21 +26,25 @@ public class player : MonoBehaviour
         switch (state)
         {
             case PlayerState.Idle:
+                animator.SetBool("isWalking", false);
                 break;
 
             case PlayerState.Walk:
+                animator.SetBool("isWalking", true);
                 break;
 
             case PlayerState.Jump:
-             
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+                animator.SetTrigger("isJumping");
+
                 break;
 
             case PlayerState.Attack:
-               
+               animator.SetTrigger("isAttacking");
                 break;
 
             case PlayerState.Dead:
-                SceneManager.LoadScene(2);
+                animator.SetTrigger("isDead");
                 break;
         }
     }
@@ -55,11 +62,14 @@ public class player : MonoBehaviour
         // Jump
         if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
         {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+            pState = PlayerState.Jump;
         }
     }
-
-    public void TakeDamage(float damage)
+    public void DealDamageP()
+    {
+        z.TakeDamageZ(damage);
+    }
+    public void TakeDamageP(float damage)
     {
 
         _health -= damage;

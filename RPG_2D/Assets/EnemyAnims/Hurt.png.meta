@@ -1,22 +1,22 @@
 fileFormatVersion: 2
-guid: 22fb3629b18abbe49a477c0f61558067
+guid: 1953c9c93b4582340a8b6b21916fa669
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4599746485825725043
-    second: Bullet_Dodge_0
+      213: -2048800907179887802
+    second: Hurt_0
   - first:
-      213: -7127676917412048720
-    second: Bullet_Dodge_1
+      213: 490842205202310979
+    second: Hurt_1
   - first:
-      213: -2156885596668144769
-    second: Bullet_Dodge_2
+      213: -3720053754089064719
+    second: Hurt_2
   - first:
-      213: 2074554628257359040
-    second: Bullet_Dodge_3
+      213: 5649970053243570431
+    second: Hurt_3
   - first:
-      213: 3006316720510834853
-    second: Bullet_Dodge_4
+      213: -371187646486735994
+    second: Hurt_4
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -112,13 +112,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Bullet_Dodge_0
+      name: Hurt_0
       rect:
         serializedVersion: 2
-        x: 49
+        x: 23
         y: 0
-        width: 40
-        height: 69
+        width: 58
+        height: 84
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -127,20 +127,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d8d918f01fa6a20c0800000000000000
-      internalID: -4599746485825725043
+      spriteID: 6437b001e623193e0800000000000000
+      internalID: -2048800907179887802
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bullet_Dodge_1
+      name: Hurt_1
       rect:
         serializedVersion: 2
-        x: 174
+        x: 151
         y: 0
-        width: 39
-        height: 69
+        width: 58
+        height: 93
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -149,20 +149,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0b057ef8b97651d90800000000000000
-      internalID: -7127676917412048720
+      spriteID: 3476ad19262dfc600800000000000000
+      internalID: 490842205202310979
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bullet_Dodge_2
+      name: Hurt_2
       rect:
         serializedVersion: 2
-        x: 292
-        y: 0
-        width: 47
-        height: 69
+        x: 276
+        y: 33
+        width: 6
+        height: 6
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -171,20 +171,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f73507d3af33112e0800000000000000
-      internalID: -2156885596668144769
+      spriteID: 1f6b92202d6bf5cc0800000000000000
+      internalID: -3720053754089064719
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bullet_Dodge_3
+      name: Hurt_3
       rect:
         serializedVersion: 2
-        x: 418
-        y: 0
-        width: 47
-        height: 70
+        x: 278
+        y: 28
+        width: 6
+        height: 6
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -193,20 +193,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0c42c64617c4acc10800000000000000
-      internalID: 2074554628257359040
+      spriteID: ff88d2f14d9b86e40800000000000000
+      internalID: 5649970053243570431
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bullet_Dodge_4
+      name: Hurt_4
       rect:
         serializedVersion: 2
-        x: 543
+        x: 279
         y: 0
-        width: 49
-        height: 70
+        width: 58
+        height: 94
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -215,8 +215,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5a89d50112598b920800000000000000
-      internalID: 3006316720510834853
+      spriteID: 683152a5dc649daf0800000000000000
+      internalID: -371187646486735994
       vertices: []
       indices: 
       edges: []
@@ -234,12 +234,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Bullet_Dodge_0: -4599746485825725043
-      Bullet_Dodge_1: -7127676917412048720
-      Bullet_Dodge_2: -2156885596668144769
-      Bullet_Dodge_3: 2074554628257359040
-      Bullet_Dodge_4: 3006316720510834853
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

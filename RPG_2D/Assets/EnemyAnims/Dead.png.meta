@@ -1,22 +1,16 @@
 fileFormatVersion: 2
-guid: 22fb3629b18abbe49a477c0f61558067
+guid: c44adfd278676bb449d5609091799ee6
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4599746485825725043
-    second: Bullet_Dodge_0
+      213: 2649847697073447219
+    second: Dead_0
   - first:
-      213: -7127676917412048720
-    second: Bullet_Dodge_1
+      213: -8293461521501190705
+    second: Dead_1
   - first:
-      213: -2156885596668144769
-    second: Bullet_Dodge_2
-  - first:
-      213: 2074554628257359040
-    second: Bullet_Dodge_3
-  - first:
-      213: 3006316720510834853
-    second: Bullet_Dodge_4
+      213: -1631342717326862633
+    second: Dead_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -112,13 +106,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Bullet_Dodge_0
+      name: Dead_0
       rect:
         serializedVersion: 2
-        x: 49
+        x: 22
         y: 0
-        width: 40
-        height: 69
+        width: 68
+        height: 91
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -127,20 +121,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d8d918f01fa6a20c0800000000000000
-      internalID: -4599746485825725043
+      spriteID: 33123f4e07626c420800000000000000
+      internalID: 2649847697073447219
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bullet_Dodge_1
+      name: Dead_1
       rect:
         serializedVersion: 2
-        x: 174
+        x: 150
         y: 0
-        width: 39
-        height: 69
+        width: 68
+        height: 91
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -149,20 +143,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0b057ef8b97651d90800000000000000
-      internalID: -7127676917412048720
+      spriteID: fc50d84dfa4b7ec80800000000000000
+      internalID: -8293461521501190705
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bullet_Dodge_2
+      name: Dead_2
       rect:
         serializedVersion: 2
-        x: 292
+        x: 278
         y: 0
-        width: 47
-        height: 69
+        width: 85
+        height: 27
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -171,52 +165,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f73507d3af33112e0800000000000000
-      internalID: -2156885596668144769
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bullet_Dodge_3
-      rect:
-        serializedVersion: 2
-        x: 418
-        y: 0
-        width: 47
-        height: 70
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 0c42c64617c4acc10800000000000000
-      internalID: 2074554628257359040
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bullet_Dodge_4
-      rect:
-        serializedVersion: 2
-        x: 543
-        y: 0
-        width: 49
-        height: 70
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5a89d50112598b920800000000000000
-      internalID: 3006316720510834853
+      spriteID: 7d6dfca117e4c59e0800000000000000
+      internalID: -1631342717326862633
       vertices: []
       indices: 
       edges: []
@@ -234,12 +184,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Bullet_Dodge_0: -4599746485825725043
-      Bullet_Dodge_1: -7127676917412048720
-      Bullet_Dodge_2: -2156885596668144769
-      Bullet_Dodge_3: 2074554628257359040
-      Bullet_Dodge_4: 3006316720510834853
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
