@@ -5,18 +5,20 @@ public class player : MonoBehaviour
 {
     public float moveSpeed = 5f;
     public float jumpForce = 12f;
+
     [SerializeField]
-    private float damage = 2;
-    [SerializeField]
-    private float _health = 10f;
+    private int _health;
+    private bool hasShield;
 
     public PlayerState pState;
 
+   
     public Transform groundCheck;       // assign a child Transform at the player's feet
     public float groundCheckRadius = 0.1f;
     public LayerMask groundLayer;       // set to your ground layer(s)
     public Animator animator;
 
+    HealthUI healthUI;
     Rigidbody2D rb;
     zombie z;
     private void UpdateState(PlayerState state)
@@ -41,6 +43,7 @@ public class player : MonoBehaviour
 
             case PlayerState.Attack:
                animator.SetTrigger("isAttacking");
+                //shoot projectile
                 break;
 
             case PlayerState.Dead:
@@ -51,6 +54,7 @@ public class player : MonoBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        hasShield = false;
     }
 
     void Update()
@@ -58,6 +62,22 @@ public class player : MonoBehaviour
         // Move
         float h = Input.GetAxisRaw("Horizontal"); // -1,0,1
         rb.linearVelocity = new Vector2(h * moveSpeed, rb.linearVelocity.y);
+        if(Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            pState = PlayerState.Attack;
+        }
+
+        if (h != 0)
+        {
+            pState = PlayerState.Walk;
+            Vector3 scale = transform.localScale;
+            scale.x = h > 0 ? Mathf.Abs(scale.x) : -Mathf.Abs(scale.x);
+            transform.localScale = scale;
+        }
+        else
+        {
+            pState = PlayerState.Idle;
+        }
 
         // Jump
         if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
@@ -65,16 +85,31 @@ public class player : MonoBehaviour
             pState = PlayerState.Jump;
         }
     }
-    public void DealDamageP()
+    public void TakeDamageP(int damage)
     {
-        z.TakeDamageZ(damage);
-    }
-    public void TakeDamageP(float damage)
-    {
-
         _health -= damage;
+        if (hasShield)
+        {
+            hasShield = false;
+            healthUI.HPUI(_health);
+            healthClamp(_health);
+        }
+        else
+        {
+            healthUI.HPUI(_health);
+            healthClamp(_health);
+        }
+    }
+    public void healthClamp(int healthPoints)
+    {
+        _health = healthPoints;
 
-        if (_health <= 0f)
+        if (_health >= 7)
+        { 
+            hasShield = true;
+            _health = 7;
+        }
+        if (_health <= 0)
         {
             pState = PlayerState.Dead;
         }

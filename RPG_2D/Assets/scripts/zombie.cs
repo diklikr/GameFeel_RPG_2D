@@ -7,7 +7,7 @@ public class zombie : MonoBehaviour
 
     private float _health = 10;
     public float health;
-    public float damage = 5f;
+    private int damage = 1;
 
     player p;
 
@@ -74,7 +74,7 @@ public class zombie : MonoBehaviour
     {
         p.TakeDamageP(damage);
     }
-    public void TakeDamageZ(float damage)
+    public void TakeDamageZ(int damage)
     {
 
         _health -= damage;
