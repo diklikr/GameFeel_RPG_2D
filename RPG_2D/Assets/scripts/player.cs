@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 
 public class player : MonoBehaviour
@@ -13,12 +14,12 @@ public class player : MonoBehaviour
     public PlayerState pState;
 
    
-    public Transform groundCheck;       // assign a child Transform at the player's feet
+    public Transform groundCheck; 
     public float groundCheckRadius = 0.1f;
-    public LayerMask groundLayer;       // set to your ground layer(s)
+    public LayerMask groundLayer;   
     public Animator animator;
 
-    HealthUI healthUI;
+    public HealthUI healthUI;
     Rigidbody2D rb;
     zombie z;
     private void UpdateState(PlayerState state)
@@ -28,21 +29,20 @@ public class player : MonoBehaviour
         switch (state)
         {
             case PlayerState.Idle:
-                animator.SetBool("isWalking", false);
+                animator.SetBool("Walk", false);
                 break;
 
             case PlayerState.Walk:
-                animator.SetBool("isWalking", true);
+                animator.SetBool("Walk", true);
                 break;
 
             case PlayerState.Jump:
                 rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
-                animator.SetTrigger("isJumping");
-
+                animator.SetTrigger("Jump");
                 break;
 
             case PlayerState.Attack:
-               animator.SetTrigger("isAttacking");
+               animator.SetTrigger("Attack");
                 //shoot projectile
                 break;
 
@@ -64,26 +64,31 @@ public class player : MonoBehaviour
         rb.linearVelocity = new Vector2(h * moveSpeed, rb.linearVelocity.y);
         if(Input.GetKeyDown(KeyCode.Mouse0))
         {
-            pState = PlayerState.Attack;
+            UpdateState(PlayerState.Attack);
         }
 
         if (h != 0)
         {
-            pState = PlayerState.Walk;
+            UpdateState(PlayerState.Walk);
             Vector3 scale = transform.localScale;
             scale.x = h > 0 ? Mathf.Abs(scale.x) : -Mathf.Abs(scale.x);
             transform.localScale = scale;
         }
         else
         {
-            pState = PlayerState.Idle;
+            UpdateState(PlayerState.Idle);
         }
 
         // Jump
         if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
         {
-            pState = PlayerState.Jump;
+            UpdateState(PlayerState.Jump);
         }
+    }
+    public void Heal(int healBoost)
+    {
+                _health += healBoost;
+        health(_health);
     }
     public void TakeDamageP(int damage)
     {
@@ -91,28 +96,30 @@ public class player : MonoBehaviour
         if (hasShield)
         {
             hasShield = false;
-            healthUI.HPUI(_health);
-            healthClamp(_health);
+            health(_health);
         }
         else
         {
-            healthUI.HPUI(_health);
-            healthClamp(_health);
+            
+            health(_health);
         }
     }
-    public void healthClamp(int healthPoints)
+    public void health(int healthPoints)
     {
+        
         _health = healthPoints;
 
         if (_health >= 7)
         { 
             hasShield = true;
             _health = 7;
+            healthUI.HPUI(_health);
         }
         if (_health <= 0)
         {
-            pState = PlayerState.Dead;
+            UpdateState(PlayerState.Dead);
         }
+        healthUI.HPUI(_health);
     }
     bool IsGrounded()
     {

@@ -67,7 +67,7 @@ public class zombie : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            zState = EnemyState.Attack;
+            UpdateState(EnemyState.Attack);
         }
     }
     void DealDamageZ()

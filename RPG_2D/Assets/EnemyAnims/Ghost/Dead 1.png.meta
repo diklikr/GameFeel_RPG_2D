@@ -1,19 +1,22 @@
 fileFormatVersion: 2
-guid: 49a9b39a596b9a847bc49c49189f38d9
+guid: e387c696cc112ee458929e773e6d8da6
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1938650676407424479
-    second: HP hearts_0
+      213: -5103894707215704807
+    second: Dead 1_0
   - first:
-      213: 1083099844972488329
-    second: HP hearts_1
+      213: 1601184963730764816
+    second: Dead 1_1
   - first:
-      213: 4021424363094079031
-    second: HP hearts_2
+      213: 3418857538956928735
+    second: Dead 1_2
   - first:
-      213: 2082479338266192786
-    second: HP hearts_3
+      213: -7123117770376698220
+    second: Dead 1_3
+  - first:
+      213: 4214101715133599909
+    second: Dead 1_4
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -109,13 +112,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: HP hearts_0
+      name: Dead 1_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 625
-        width: 600
-        height: 509
+        x: 50
+        y: 33
+        width: 25
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +127,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fd5d5dec48877ea10800000000000000
-      internalID: 1938650676407424479
+      spriteID: 91d596d2ec25b29b0800000000000000
+      internalID: -5103894707215704807
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HP hearts_1
+      name: Dead 1_1
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 600
-        height: 509
+        x: 180
+        y: 37
+        width: 22
+        height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -146,20 +149,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 986addb0291f70f00800000000000000
-      internalID: 1083099844972488329
+      spriteID: 0147ed6bd3d883610800000000000000
+      internalID: 1601184963730764816
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HP hearts_2
+      name: Dead 1_2
       rect:
         serializedVersion: 2
-        x: 779
-        y: 0
-        width: 602
-        height: 509
+        x: 310
+        y: 36
+        width: 19
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -168,20 +171,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 736f25dd628fec730800000000000000
-      internalID: 4021424363094079031
+      spriteID: fd6a13b51d8327f20800000000000000
+      internalID: 3418857538956928735
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HP hearts_3
+      name: Dead 1_3
       rect:
         serializedVersion: 2
-        x: 1604
-        y: 0
-        width: 600
-        height: 509
+        x: 441
+        y: 36
+        width: 13
+        height: 17
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -190,8 +193,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 29b6279bce376ec10800000000000000
-      internalID: 2082479338266192786
+      spriteID: 496ac63b02a952d90800000000000000
+      internalID: -7123117770376698220
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dead 1_4
+      rect:
+        serializedVersion: 2
+        x: 570
+        y: 36
+        width: 10
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a017e1ce2f7b7a30800000000000000
+      internalID: 4214101715133599909
       vertices: []
       indices: 
       edges: []
@@ -209,11 +234,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      HP hearts_0: 1938650676407424479
-      HP hearts_1: 1083099844972488329
-      HP hearts_2: 4021424363094079031
-      HP hearts_3: 2082479338266192786
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
