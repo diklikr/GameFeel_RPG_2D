@@ -4,9 +4,9 @@ using UnityEngine;
 public class Ghost : MonoBehaviour
 {
     public Animator animator;
-
+    public CineCamara shake;
     GhostState gstate;
-    int health = 1;
+    int health;
 
     public float speed = 1.5f;
     public float floatAmplitude = 0.25f;
@@ -21,6 +21,7 @@ public class Ghost : MonoBehaviour
     {
         baseY = transform.position.y;
         UpdateState(GhostState.Walk);
+        health = 1;
     }
 
     private void Update()
@@ -48,6 +49,7 @@ public class Ghost : MonoBehaviour
 
             case GhostState.Dead:
                 animator.SetTrigger("GhostDead");
+                shake.ShakeCamera();
                 gameObject.SetActive(false);
                 break;
         }

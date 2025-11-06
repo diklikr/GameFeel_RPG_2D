@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Crow : MonoBehaviour
 {
+    public CineCamara shake;
     public Animator animator;
     public player player;
     CrowState cState;
@@ -9,12 +10,13 @@ public class Crow : MonoBehaviour
     public float detectRadius = 8f;
     public float flySpeed = 3f;
     public float stopDistance = 0.5f;
-    public int health = 2;
+    public int health;
     bool isFound = false;
 
     private void Start()
     {
         UpdateState(CrowState.Idle);
+        health = 2;
     }
 
     private void Update()
@@ -80,6 +82,7 @@ public class Crow : MonoBehaviour
 
             case CrowState.Dead:
                 animator.SetTrigger("CrowDead");
+                shake.ShakeCamera();
                 gameObject.SetActive(false);
                 break;
         }
