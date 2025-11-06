@@ -12,8 +12,8 @@ public class player : MonoBehaviour
     private bool hasShield;
 
     public PlayerState pState;
+    public BulletMove arrow;
 
-   
     public Transform groundCheck; 
     public float groundCheckRadius = 0.1f;
     public LayerMask groundLayer;   
@@ -22,6 +22,8 @@ public class player : MonoBehaviour
     public HealthUI healthUI;
     Rigidbody2D rb;
     zombie z;
+    public CineCamera shake;
+    private float lookingDirection;
     private void UpdateState(PlayerState state)
     {
         pState = state;
@@ -37,17 +39,20 @@ public class player : MonoBehaviour
                 break;
 
             case PlayerState.Jump:
-                rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
                 animator.SetTrigger("Jump");
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
                 break;
 
             case PlayerState.Attack:
                animator.SetTrigger("Attack");
+                Instantiate(arrow, transform.position, Quaternion.identity);
+                arrow.SetDirection(lookingDirection);
                 //shoot projectile
                 break;
 
             case PlayerState.Dead:
                 animator.SetTrigger("isDead");
+                
                 break;
         }
     }
@@ -62,9 +67,14 @@ public class player : MonoBehaviour
         // Move
         float h = Input.GetAxisRaw("Horizontal"); // -1,0,1
         rb.linearVelocity = new Vector2(h * moveSpeed, rb.linearVelocity.y);
-        if(Input.GetKeyDown(KeyCode.Mouse0))
+        lookingDirection = h != 0 ? Mathf.Sign(h) : lookingDirection;
+        if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             UpdateState(PlayerState.Attack);
+        }
+        if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
+        {
+            UpdateState(PlayerState.Jump);
         }
 
         if (h != 0)
@@ -79,19 +89,15 @@ public class player : MonoBehaviour
             UpdateState(PlayerState.Idle);
         }
 
-        // Jump
-        if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
-        {
-            UpdateState(PlayerState.Jump);
-        }
     }
     public void Heal(int healBoost)
     {
-                _health += healBoost;
+        _health += healBoost;
         health(_health);
     }
     public void TakeDamageP(int damage)
     {
+        shake.Shake(0.3f, 0.25f, 3f);
         _health -= damage;
         if (hasShield)
         {
@@ -109,10 +115,10 @@ public class player : MonoBehaviour
         
         _health = healthPoints;
 
-        if (_health >= 7)
+        if (_health >= 2)
         { 
             hasShield = true;
-            _health = 7;
+            _health = 2;
             healthUI.HPUI(_health);
         }
         if (_health <= 0)
