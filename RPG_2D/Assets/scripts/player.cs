@@ -23,6 +23,7 @@ public class player : MonoBehaviour
     Rigidbody2D rb;
     zombie z;
     public CineCamara shake;
+    public TimeManager timeManager;
     private float lookingDirection;
     private void UpdateState(PlayerState state)
     {
@@ -97,6 +98,7 @@ public class player : MonoBehaviour
     }
     public void TakeDamageP(int damage)
     {
+        timeManager.FreezeFrame(0,0.2f);
         shake.ShakeCamera();
         _health -= damage;
         if (hasShield)
