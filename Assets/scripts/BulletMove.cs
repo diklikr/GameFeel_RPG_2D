@@ -1,20 +1,20 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BulletMove : MonoBehaviour
 {
-    public float speed = 8f;
-    public float lifeTime = 5f;
+    public int speed;
     public bool usePlayerFacing = true;
 
     int direction = 1;
-    float lifeTimer;
+    public float shootBoostTime;
 
     Crow crow;
     Ghost ghost;
 
     void Start()
     {
-        lifeTimer = lifeTime;
+        speed = 10;
 
         if (usePlayerFacing)
         {
@@ -31,13 +31,13 @@ public class BulletMove : MonoBehaviour
         ls.x = Mathf.Abs(ls.x) * direction;
         transform.localScale = ls;
     }
-
+   public void SetSpeed(int newSpeed)
+    {
+                speed = newSpeed;
+    }
     void Update()
     {
         transform.Translate(Vector2.right * direction * speed * Time.deltaTime, Space.Self);
-
-        lifeTimer -= Time.deltaTime;
-        if (lifeTimer <= 0f) Destroy(gameObject);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
