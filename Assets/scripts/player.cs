@@ -25,6 +25,8 @@ public class player : MonoBehaviour
     public CineCamara shake;
     public TimeManager timeManager;
     private float lookingDirection;
+
+    SoundList soundList;
     private void UpdateState(PlayerState state)
     {
         pState = state;
@@ -41,6 +43,7 @@ public class player : MonoBehaviour
 
             case PlayerState.Jump:
                 animator.SetTrigger("Jump");
+                soundList.PlaySound("Jump");
                 rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
                 break;
 
@@ -48,12 +51,12 @@ public class player : MonoBehaviour
                animator.SetTrigger("Attack");
                 Instantiate(arrow, transform.position, Quaternion.identity);
                 arrow.SetDirection(lookingDirection);
-                //shoot projectile
+                soundList.PlaySound("Attack");
                 break;
 
             case PlayerState.Dead:
                 animator.SetTrigger("isDead");
-                
+                SceneManager.LoadScene(2);
                 break;
         }
     }

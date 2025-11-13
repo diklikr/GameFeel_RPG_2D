@@ -37,13 +37,14 @@ public class TimeManager : MonoBehaviour
         if(Input.GetKeyDown(pauseKey))
         {
             OnPause(!gamePaused);
+            
         }
     }
 
     public void SetTime(float timescale)
     {
-        Time.timeScale = targetTimescale;
         targetTimescale = timescale;
+        Time.timeScale = targetTimescale;
     }
     public void OnPause(bool pause)
     {
@@ -57,10 +58,11 @@ public class TimeManager : MonoBehaviour
         {
             SetTime(0);
             pauseTween = pauseMenu.DOFade(1, pauseTweenTime).SetUpdate(true);
+            pauseMenu.alpha = 1;
         }
         else
         {
-          
+            pauseMenu.alpha = 0;
             pauseTween = pauseMenu.DOFade(0, pauseTweenTime).OnComplete(()=> { SetTime(1); Debug.Log("WAZA"); }).SetUpdate(true);
         }
     }

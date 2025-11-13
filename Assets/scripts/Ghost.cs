@@ -45,6 +45,7 @@ public class Ghost : MonoBehaviour
             case GhostState.Attack:
                 animator.SetTrigger("GhostAttack");
                 player.TakeDamageP(1);
+                UpdateState(GhostState.Walk);
                 break;
 
             case GhostState.Dead:

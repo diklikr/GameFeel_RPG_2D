@@ -45,10 +45,12 @@ public class BulletMove : MonoBehaviour
        if(collision.gameObject.CompareTag("Crow"))
         {
             crow.HPCrow(1);
+            Destroy();
         }
        if(collision.gameObject.CompareTag("Ghost"))
           {
                 ghost.HPGhost(1);
+            Destroy();
         }
     }
 
@@ -59,5 +61,10 @@ public class BulletMove : MonoBehaviour
         Vector3 ls = transform.localScale;
         ls.x = Mathf.Abs(ls.x) * direction;
         transform.localScale = ls;
+    }
+   
+    public void Destroy()
+    {
+        gameObject.SetActive(false);
     }
 }
