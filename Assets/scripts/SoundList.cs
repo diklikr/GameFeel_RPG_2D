@@ -2,12 +2,21 @@ using UnityEngine;
 using UnityEngine.Audio;
 using DG.Tweening;
 
+
 public class SoundList : MonoBehaviour
 {
-   public Sound [] soundList;
+    public static SoundList instance;
+    public Sound [] soundList;
     private float minPitch = 0.85f;
     private float maxPitch = 1.2f;
 
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+}
     void Start()
     {
         for (int i = 0; i < soundList.Length; i++)

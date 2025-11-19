@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
@@ -14,9 +15,9 @@ public class player : MonoBehaviour
     public PlayerState pState;
     public BulletMove arrow;
 
-    public Transform groundCheck; 
+    public Transform groundCheck;
     public float groundCheckRadius = 0.1f;
-    public LayerMask groundLayer;   
+    public LayerMask groundLayer;
     public Animator animator;
 
     public HealthUI healthUI;
@@ -24,9 +25,22 @@ public class player : MonoBehaviour
     zombie z;
     public CineCamara shake;
     public TimeManager timeManager;
-    private float lookingDirection;
+    public float lookingDirection;
 
-    SoundList soundList;
+    public SoundList soundList;
+
+    public BoostType currentBoost = BoostType.None;
+    public int normalBulletSpeed = 5;
+    public int shootBoostedSpeed = 10;
+    public float spreadAngle = 15f;
+
+    public enum BoostType
+    {
+        None,
+        Shoot,
+        Ballesta
+    }
+
     private void UpdateState(PlayerState state)
     {
         pState = state;
@@ -43,15 +57,39 @@ public class player : MonoBehaviour
 
             case PlayerState.Jump:
                 animator.SetTrigger("Jump");
-                soundList.PlaySound("Jump");
+                SoundList.instance.PlaySound("Jump");
                 rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
                 break;
 
             case PlayerState.Attack:
-               animator.SetTrigger("Attack");
-                Instantiate(arrow, transform.position, Quaternion.identity);
-                arrow.SetDirection(lookingDirection);
-                soundList.PlaySound("Attack");
+                animator.SetTrigger("Attack");
+                if (arrow != null)
+                {
+                    if (currentBoost == BoostType.Ballesta)
+                    {
+                        float baseAngle = lookingDirection >= 0f ? 0f : 180f;
+                        
+
+                        var left = Instantiate(arrow, transform.position, Quaternion.Euler(0f, 0f, baseAngle + spreadAngle));
+                        left.SetSpeed(normalBulletSpeed * lookingDirection);
+                        left.SetDirection(lookingDirection);
+
+                        var center = Instantiate(arrow, transform.position, Quaternion.Euler(0f, 0f, baseAngle));
+                        center.SetSpeed(normalBulletSpeed * lookingDirection);
+                        center.SetDirection(lookingDirection);
+
+                        var right = Instantiate(arrow, transform.position, Quaternion.Euler(0f, 0f, baseAngle - spreadAngle));
+                        right.SetSpeed(normalBulletSpeed * lookingDirection);
+                        right.SetDirection(lookingDirection);
+                    }
+                    else
+                    {
+                        var center = Instantiate(arrow, transform.position, Quaternion.identity);
+                        center.SetSpeed(currentBoost == BoostType.Shoot ? shootBoostedSpeed * lookingDirection : normalBulletSpeed * lookingDirection);
+                        center.SetDirection(lookingDirection);
+                    }
+                }
+                SoundList.instance.PlaySound("Attack");
                 break;
 
             case PlayerState.Dead:
@@ -60,6 +98,7 @@ public class player : MonoBehaviour
                 break;
         }
     }
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -68,8 +107,7 @@ public class player : MonoBehaviour
 
     void Update()
     {
-        // Move
-        float h = Input.GetAxisRaw("Horizontal"); // -1,0,1
+        float h = Input.GetAxisRaw("Horizontal");
         rb.linearVelocity = new Vector2(h * moveSpeed, rb.linearVelocity.y);
         lookingDirection = h != 0 ? Mathf.Sign(h) : lookingDirection;
         if (Input.GetKeyDown(KeyCode.Mouse0))
@@ -101,7 +139,7 @@ public class player : MonoBehaviour
     }
     public void TakeDamageP(int damage)
     {
-        timeManager.FreezeFrame(0,0.2f);
+        timeManager.FreezeFrame(0, 0.2f);
         shake.ShakeCamera();
         _health -= damage;
         if (hasShield)
@@ -111,17 +149,15 @@ public class player : MonoBehaviour
         }
         else
         {
-            
             health(_health);
         }
     }
     public void health(int healthPoints)
     {
-        
         _health = healthPoints;
 
         if (_health >= 2)
-        { 
+        {
             hasShield = true;
             _health = 2;
             healthUI.HPUI(_health);
@@ -136,5 +172,15 @@ public class player : MonoBehaviour
     {
         if (groundCheck == null) return false;
         return Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer) != null;
+    }
+
+    public void SetBoostToShoot()
+    {
+        currentBoost = BoostType.Shoot;
+    }
+
+    public void SetBoostToBallesta()
+    {
+        currentBoost = BoostType.Ballesta;
     }
 }

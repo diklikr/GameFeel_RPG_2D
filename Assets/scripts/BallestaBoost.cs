@@ -2,14 +2,19 @@ using UnityEngine;
 
 public class BallestaBoost : MonoBehaviour
 {
-    //Spread Gun
-    
-    void Start()
+            player playerComponent;
+
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        
-    }
-    void Update()
-    {
-        
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            playerComponent = collision.gameObject.GetComponent<player>();
+            if (playerComponent != null)
+            {
+                playerComponent.SetBoostToBallesta();
+                Destroy(gameObject);
+            }
+            SoundList.instance.PlaySound("Boosts");
+        }
     }
 }

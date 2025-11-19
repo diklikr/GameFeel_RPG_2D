@@ -3,8 +3,7 @@ using UnityEngine.UI;
 
 public class BulletMove : MonoBehaviour
 {
-    public int speed;
-    public bool usePlayerFacing = true;
+    private float speed;
 
     int direction = 1;
     public float shootBoostTime;
@@ -14,30 +13,19 @@ public class BulletMove : MonoBehaviour
 
     void Start()
     {
-        speed = 10;
-
-        if (usePlayerFacing)
-        {
-            var playerGO = GameObject.FindGameObjectWithTag("Player");
-            if (playerGO != null)
-            {
-                float sx = playerGO.transform.localScale.x;
-                direction = sx >= 0f ? 1 : -1;
-            }
-        }
-
         // ensure sprite/orientation matches direction
         Vector3 ls = transform.localScale;
         ls.x = Mathf.Abs(ls.x) * direction;
         transform.localScale = ls;
     }
-   public void SetSpeed(int newSpeed)
+   public void SetSpeed(float newSpeed)
     {
                 speed = newSpeed;
+        Debug.Log("Speed set to: " + newSpeed);
     }
     void Update()
     {
-        transform.Translate(Vector2.right * direction * speed * Time.deltaTime, Space.Self);
+        transform.Translate(Vector2.right * speed * Time.deltaTime, Space.Self);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
