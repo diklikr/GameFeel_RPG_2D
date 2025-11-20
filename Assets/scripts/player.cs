@@ -93,7 +93,7 @@ public class player : MonoBehaviour
 
             case PlayerState.Dead:
                 animator.SetTrigger("isDead");
-                SoundList.instance.PlaySound("Dead");
+                SoundList.instance.PlaySound("Death");
                 SceneManager.LoadScene(2);
                 break;
         }

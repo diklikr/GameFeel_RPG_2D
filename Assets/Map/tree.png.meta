@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: 8817b7e6a2afc254c969e68970ec93d2
+guid: ad0bcc66c1f633e418f9480b1f44e716
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8832167503239892954
-    second: pngwing.com_0
+      213: -8667466294985060184
+    second: tree_0
   - first:
-      213: -4853055123583119345
-    second: pngwing.com_1
+      213: 5281997702118322174
+    second: tree_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -103,13 +103,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: pngwing.com_0
+      name: tree_0
       rect:
         serializedVersion: 2
-        x: 148
-        y: 143
-        width: 506
-        height: 487
+        x: 5
+        y: 0
+        width: 85
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -118,20 +118,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: adfcc53ac89229a70800000000000000
-      internalID: 8832167503239892954
+      spriteID: 8a09eb0b359f6b780800000000000000
+      internalID: -8667466294985060184
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pngwing.com_1
+      name: tree_1
       rect:
         serializedVersion: 2
-        x: 238
-        y: 47
-        width: 318
-        height: 88
+        x: 108
+        y: 0
+        width: 64
+        height: 73
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -140,8 +140,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f005073e31c76acb0800000000000000
-      internalID: -4853055123583119345
+      spriteID: eff2133ccec6d4940800000000000000
+      internalID: 5281997702118322174
       vertices: []
       indices: 
       edges: []
@@ -159,9 +159,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      pngwing.com_0: 8832167503239892954
-      pngwing.com_1: -4853055123583119345
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
