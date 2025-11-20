@@ -16,7 +16,6 @@ public class Crow : MonoBehaviour
     private void Start()
     {
         UpdateState(CrowState.Idle);
-        health = 2;
     }
 
     private void Update()
@@ -83,7 +82,7 @@ public class Crow : MonoBehaviour
             case CrowState.Dead:
                 animator.SetTrigger("CrowDead");
                 shake.ShakeCamera();
-                gameObject.SetActive(false);
+                gameObject.GetComponent<Collider2D>().enabled = false;
                 break;
         }
     }
