@@ -67,18 +67,17 @@ public class player : MonoBehaviour
                 {
                     if (currentBoost == BoostType.Ballesta)
                     {
-                        float baseAngle = lookingDirection >= 0f ? 0f : 180f;
                         
 
-                        var left = Instantiate(arrow, transform.position, Quaternion.Euler(0f, 0f, baseAngle + spreadAngle));
+                        var left = Instantiate(arrow, transform.position, Quaternion.Euler(0f, 0f, spreadAngle));
                         left.SetSpeed(normalBulletSpeed * lookingDirection);
                         left.SetDirection(lookingDirection);
 
-                        var center = Instantiate(arrow, transform.position, Quaternion.Euler(0f, 0f, baseAngle));
+                        var center = Instantiate(arrow, transform.position, Quaternion.Euler(0f, 0f, 0f));
                         center.SetSpeed(normalBulletSpeed * lookingDirection);
                         center.SetDirection(lookingDirection);
 
-                        var right = Instantiate(arrow, transform.position, Quaternion.Euler(0f, 0f, baseAngle - spreadAngle));
+                        var right = Instantiate(arrow, transform.position, Quaternion.Euler(0f, 0f, -spreadAngle));
                         right.SetSpeed(normalBulletSpeed * lookingDirection);
                         right.SetDirection(lookingDirection);
                     }
@@ -94,6 +93,7 @@ public class player : MonoBehaviour
 
             case PlayerState.Dead:
                 animator.SetTrigger("isDead");
+                SoundList.instance.PlaySound("Dead");
                 SceneManager.LoadScene(2);
                 break;
         }
@@ -103,6 +103,12 @@ public class player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         hasShield = false;
+    }
+    void Start()
+    {
+        lookingDirection = 1f;
+        health(_health);
+        SoundList.instance.PlaySound("BG");
     }
 
     void Update()

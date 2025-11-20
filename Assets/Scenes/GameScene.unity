@@ -425,7 +425,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 5.06, y: 4.87}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -842,13 +842,13 @@ MonoBehaviour:
     mixer: {fileID: -5667292089127669328, guid: d694fabd22092c84182d229adefa69a3, type: 2}
     source: {fileID: 0}
   - audioName: GhostDeath
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: 648ed8f974b4b7842ae6937fdbfa2636, type: 3}
     volume: 0
     pitch: 0
     mixer: {fileID: -5667292089127669328, guid: d694fabd22092c84182d229adefa69a3, type: 2}
     source: {fileID: 0}
   - audioName: CrowDeath
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: e11703baa14c7da4bbe33d1676681251, type: 3}
     volume: 0
     pitch: 0
     mixer: {fileID: -5667292089127669328, guid: d694fabd22092c84182d229adefa69a3, type: 2}
@@ -866,19 +866,19 @@ MonoBehaviour:
     mixer: {fileID: -5667292089127669328, guid: d694fabd22092c84182d229adefa69a3, type: 2}
     source: {fileID: 0}
   - audioName: GhostAttack
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: 648ed8f974b4b7842ae6937fdbfa2636, type: 3}
     volume: 0
     pitch: 0
     mixer: {fileID: -5667292089127669328, guid: d694fabd22092c84182d229adefa69a3, type: 2}
     source: {fileID: 0}
   - audioName: CrowAttack
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: 95cfa2997a912bd45af1e9005e3f3191, type: 3}
     volume: 0
     pitch: 0
     mixer: {fileID: -5667292089127669328, guid: d694fabd22092c84182d229adefa69a3, type: 2}
     source: {fileID: 0}
   - audioName: BGMusic
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: 7f583d82c2e750547baae7ca396f84cb, type: 3}
     volume: 0
     pitch: 0
     mixer: {fileID: 1881854154465204919, guid: d694fabd22092c84182d229adefa69a3, type: 2}
@@ -4356,7 +4356,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c15f49b3cd9890b48ae9335b9e7f9d99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 7
+  moveSpeed: 4
   jumpForce: 8
   _health: 10
   pState: 0
