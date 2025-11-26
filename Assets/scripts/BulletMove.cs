@@ -7,6 +7,7 @@ public class BulletMove : MonoBehaviour
 
     int direction = 1;
     public float shootBoostTime;
+    int damage = 1;
 
     Crow crow;
     Ghost ghost;
@@ -30,14 +31,27 @@ public class BulletMove : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-       if(collision.gameObject.CompareTag("Crow"))
+        print("Bullet collided with: " + collision.gameObject.name);
+        if (collision.gameObject.CompareTag("Crow"))
         {
-            crow.HPCrow(1);
+            collision.gameObject.TryGetComponent<Crow>(out crow);
+            crow.HPCrow(damage);
             Destroy();
         }
        if(collision.gameObject.CompareTag("Ghost"))
           {
-                ghost.HPGhost(1);
+            collision.gameObject.TryGetComponent<Ghost>(out ghost);
+            ghost.HPGhost(damage);
+            Destroy();
+          }
+       if(collision.gameObject.CompareTag("Boss"))
+        {
+
+            Destroy();
+        }
+       if(collision.gameObject.CompareTag("Plant"))
+        {
+
             Destroy();
         }
     }

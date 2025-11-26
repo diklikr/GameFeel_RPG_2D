@@ -94,7 +94,6 @@ public class player : MonoBehaviour
             case PlayerState.Dead:
                 animator.SetTrigger("isDead");
                 SoundList.instance.PlaySound("Death");
-                SceneManager.LoadScene(2);
                 break;
         }
     }
@@ -170,6 +169,7 @@ public class player : MonoBehaviour
         }
         if (_health <= 0)
         {
+            SceneManager.LoadScene(2);
             UpdateState(PlayerState.Dead);
         }
         healthUI.HPUI(_health);

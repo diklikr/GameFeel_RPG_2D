@@ -6,7 +6,7 @@ public class Ghost : MonoBehaviour
     public Animator animator;
     public CineCamara shake;
     GhostState gstate;
-    int health;
+    public int health;
 
     public float speed = 1.5f;
     public float floatAmplitude = 0.25f;
@@ -71,7 +71,6 @@ public class Ghost : MonoBehaviour
         if (collision.gameObject.CompareTag("Player") && !isAttacking)
         {
             UpdateState(GhostState.Attack);
-            
         }
     }
 

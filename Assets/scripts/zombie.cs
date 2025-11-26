@@ -29,7 +29,6 @@ public class zombie : MonoBehaviour
         {
             case EnemyState.Idle:
                 currentSpeed = 0;
-                currentTarget = GetRandomPoint();
                 break;
 
             case EnemyState.Patrol:
@@ -50,14 +49,6 @@ public class zombie : MonoBehaviour
                 gameObject.SetActive(false);
                 break;
         }
-    }
-    private Vector3 GetRandomPoint()
-    {
-        return Random.insideUnitSphere * patrolRadius;
-    }
-    private bool HasReachedTarget()
-    {
-        return Vector3.Distance(transform.position, currentTarget) > arriveDistance;
     }
     void Start()
     {

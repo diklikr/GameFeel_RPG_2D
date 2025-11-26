@@ -29,7 +29,7 @@ public class SoundList : MonoBehaviour
     public void PlaySound(string audioName)
     {
         Sound sound = FindSound(audioName);
-        sound.source.Stop();
+        sound.source.Play();
     }
 
    public void PlayRandomPitch(string audioName)

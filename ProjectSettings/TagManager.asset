@@ -9,6 +9,8 @@ TagManager:
   - Crow
   - Ghost
   - GroundDeath
+  - Boss
+  - Plant
   layers:
   - Default
   - TransparentFX

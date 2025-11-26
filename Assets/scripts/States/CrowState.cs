@@ -6,6 +6,7 @@ public enum CrowState
         Idle,
         Walk,
         Attack,
+        Hurt,
         Dead
     
 }

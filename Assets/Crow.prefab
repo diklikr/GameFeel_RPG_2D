@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1423244679665424314}
   - component: {fileID: 689663743728435243}
   - component: {fileID: 5457537740928945826}
+  - component: {fileID: 5437660896742628261}
   m_Layer: 0
   m_Name: Crow
   m_TagString: Crow
@@ -30,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -7.372952, y: 0.16881658, z: 0}
-  m_LocalScale: {x: 5.151, y: 5, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -148,6 +149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0017028d19316246a22afeb2ef48796, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shake: {fileID: 0}
   animator: {fileID: 5457537740928945826}
   player: {fileID: 0}
   detectRadius: 8
@@ -176,3 +178,30 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!50 &5437660896742628261
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2677508965719076430}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

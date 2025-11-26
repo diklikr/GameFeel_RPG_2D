@@ -1,4 +1,5 @@
 using UnityEngine;
+using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class Crow : MonoBehaviour
 {
@@ -15,41 +16,53 @@ public class Crow : MonoBehaviour
 
     private void Start()
     {
-        UpdateState(CrowState.Idle);
+        SetState(CrowState.Idle);
     }
 
     private void Update()
     {
-        if (!isFound)
-        {
-            if (found())
-            {
-                isFound = true;
-                UpdateState(CrowState.Walk);
-            }
-        }
+        UpdateState();
+    }
 
-        if (isFound && cState == CrowState.Walk && player != null)
+    public void SetState(CrowState state)
+    {
+                cState = state;
+
+        switch (state)
         {
-            Vector3 dir = (player.transform.position - transform.position);
-            float dist = dir.magnitude;
-            if (dist > stopDistance)
-            {
-                dir.Normalize();
-                transform.position += dir * flySpeed * Time.deltaTime;
-                if (dir.x != 0f)
-                    transform.localScale = new Vector3(Mathf.Sign(dir.x) * Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
-            }
+            case CrowState.Idle:
+                break;
+
+            case CrowState.Walk:
+                animator.Play("CrowWalk");
+                break;
+
+            case CrowState.Attack:
+                animator.Play("CrowAttack");
+                player.TakeDamageP(1);
+                break;
+
+            case CrowState.Dead:
+                animator.Play("CrowDead");
+                shake.ShakeCamera();
+                gameObject.GetComponent<Collider2D>().enabled = false;
+                Destroy(gameObject, 1f);
+                break;
+            case CrowState.Hurt:
+                animator.Play("CrowHurt");
+
+                break;
         }
     }
 
     public void HPCrow(int damage)
     {
         health -= damage;
+        SetState(CrowState.Dead);
 
         if (health <= 0)
         {
-            UpdateState(CrowState.Dead);
+            SetState(CrowState.Dead);
         }
     }
     public bool found()
@@ -60,29 +73,51 @@ public class Crow : MonoBehaviour
         return dist <= detectRadius;
     }
 
-    private void UpdateState(CrowState state)
+    private void UpdateState()
     {
-        cState = state;
-
-        switch (state)
+        switch (cState)
         {
             case CrowState.Idle:
-                animator.SetBool("CrowWalk", false);
+                if (found())
+                {
+                    isFound = true;
+                    SetState(CrowState.Walk);
+                }
                 break;
 
             case CrowState.Walk:
-                animator.SetBool("CrowWalk", true);
-
-                break;
+                if (found())
+                {
+                    Vector3 dir = (player.transform.position - transform.position);
+                    float dist = dir.magnitude;
+                    if (dist > stopDistance)
+                    {
+                        dir.Normalize();
+                        transform.position += dir * flySpeed * Time.deltaTime;
+                        if (dir.x != 0f)
+                            transform.localScale = new Vector3(Mathf.Sign(dir.x) * Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+                    }
+                }
+            break;
 
             case CrowState.Attack:
-                animator.SetTrigger("CrowAttack");
+                animator.Play("CrowAttack");
+                if(animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f)
+                {
+                    SetState(CrowState.Walk);
+                }
                 break;
 
-            case CrowState.Dead:
-                animator.SetTrigger("CrowDead");
-                shake.ShakeCamera();
-                gameObject.GetComponent<Collider2D>().enabled = false;
+            case CrowState.Dead:   
+                
+                break;
+
+            case CrowState.Hurt:
+
+                if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f)
+                {
+                    SetState(CrowState.Walk);
+                }
                 break;
         }
     }
@@ -91,8 +126,7 @@ public class Crow : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            UpdateState(CrowState.Attack);
-            player.TakeDamageP(1);
+            SetState(CrowState.Attack);
         }
     }
 }
