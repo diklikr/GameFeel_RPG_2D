@@ -3,11 +3,17 @@ using UnityEngine;
 public class ShootBoost : MonoBehaviour
 {
     player playerComponent;
-    SoundList soundList;
     private void OnCollisionEnter2D(Collision2D collision)
     {
-            playerComponent.SetBoostToShoot();
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            playerComponent = collision.gameObject.GetComponent<player>();
+            if (playerComponent != null)
+            {
+                playerComponent.SetBoostToShoot();
+                Destroy(gameObject);
+            }
             SoundList.instance.PlaySound("Boosts");
-            Destroy(gameObject);
+        }
     }
 }
