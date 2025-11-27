@@ -5,40 +5,60 @@ using UnityEngine.SceneManagement;
 public class zombie : MonoBehaviour
 {
 
-    private float _health = 10;
+    private float _health = 1;
     public float health;
     private int damage = 1;
 
-    player p;
+    public player p;
 
     public EnemyState zState;
-    public NavMeshAgent agent;
-    public SphereCollider visionTrigger;
-
-    private float currentSpeed;
-    private Vector3 currentTarget;
-    public float patrolSpeed, attackSpeed, patrolRadius, arriveDistance;
 
     public Animator animator;
+    public float walkSpeed;
+    public Rigidbody2D rb;
+    private int dir = 1;
+
+    void Update()
+    {
+        switch (zState)
+        {
+
+            case EnemyState.Walk:
+                if (p != null)
+                {
+                    float dx = p.transform.position.x - transform.position.x;
+                    dir = dx > 0 ? 1 : -1;
+                }
+
+                if (rb != null)
+                {
+                    var v = rb.linearVelocity;
+                    v.x = dir * walkSpeed;
+                    rb.linearVelocity = v;
+                }
+
+                var s = transform.localScale;
+                s.x = Mathf.Abs(s.x) * dir;
+                transform.localScale = s;
+                break;
+
+            case EnemyState.Attack:
+                break;
+
+            case EnemyState.Dead:
+                gameObject.SetActive(false);
+                break;
+        }
+    }
 
     private void UpdateState(EnemyState state)
     {
         zState = state;
-
         switch (state)
         {
-            case EnemyState.Idle:
-                currentSpeed = 0;
-                break;
 
-            case EnemyState.Patrol:
-                currentSpeed = patrolSpeed;
-                
-                break;
-
-            case EnemyState.Aggro:
-                currentSpeed = attackSpeed;
-                currentTarget = p.transform.position;
+            case EnemyState.Walk:
+                if (animator != null) animator.Play("SnakeWalk");
                 break;
 
             case EnemyState.Attack:
@@ -49,6 +69,7 @@ public class zombie : MonoBehaviour
                 gameObject.SetActive(false);
                 break;
         }
+
     }
     void Start()
     {
@@ -63,7 +84,7 @@ public class zombie : MonoBehaviour
     }
     void DealDamageZ()
     {
-        p.TakeDamageP(damage);
+        if (p != null) p.TakeDamageP(damage);
     }
     public void TakeDamageZ(int damage)
     {

@@ -43,7 +43,7 @@ public class BulletMove : MonoBehaviour
             collision.gameObject.TryGetComponent<Ghost>(out ghost);
             ghost.HPGhost(damage);
             Destroy();
-          }
+        }
        if(collision.gameObject.CompareTag("Boss"))
         {
 
@@ -54,6 +54,14 @@ public class BulletMove : MonoBehaviour
 
             Destroy();
         }
+       if(collision.gameObject.CompareTag("Snake"))
+        {
+            zombie p;
+            p = collision.gameObject.GetComponent<zombie>();
+            p.TakeDamageZ(damage);
+            Destroy();
+        }
+        
     }
 
 

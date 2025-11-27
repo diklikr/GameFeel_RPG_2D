@@ -41,7 +41,7 @@ public class Boss : MonoBehaviour
         switch (state)
         {
             case BossState.Walk:
-                //walk towards player
+                //walk yoyo movement
                 attackCoroutine = StartCoroutine(Attack());
                 break;
 

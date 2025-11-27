@@ -11,6 +11,7 @@ TagManager:
   - GroundDeath
   - Boss
   - Plant
+  - Snake
   layers:
   - Default
   - TransparentFX
