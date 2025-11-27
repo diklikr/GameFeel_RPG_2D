@@ -1,50 +1,80 @@
+using System.Collections;
 using UnityEngine;
 
 public class Plant : MonoBehaviour
 {
-    public EnemyBullet projectilePrefab;
-    [SerializeField] private Transform firePoint;
-    [SerializeField] private float shootCooldown = 1.2f;
-    [SerializeField] private float shootRange = 8f;
+    private float _health = 2;
+    public float health;
+    private int damage = 1;
 
-    public int health = 2;
+    player p;
 
+    private float currentSpeed;
 
-    private float timer;
-    private Transform player;
+    public Animator animator;
+    private PlantState plantState;
 
-    public bool IsDead => health <= 0;
+    public EnemyBullet enemyBulletPrefab;
 
-    void Awake()
+    private enum PlantState
     {
-   
-        var playerObj = GameObject.FindGameObjectWithTag("Player");
-        if (playerObj) player = playerObj.transform;
+        Idle,
+        Attack,
+        Dead
     }
 
     void Update()
     {
-
-        if (IsDead || !player) return;
-
-        int facing = player.position.x >= transform.position.x ? 1 : -1;
-        var s = transform.localScale; s.x = Mathf.Abs(s.x) * facing; transform.localScale = s;
-
-        timer -= Time.deltaTime;
-        float dist = Vector2.Distance(player.position, transform.position);
-        if (dist <= shootRange && timer <= 0f)
-        {
-            Shoot(facing);
-            timer = shootCooldown;
-        }
-
+        UpdateState(plantState);
     }
 
-    private void Shoot(int facing)
+    private void UpdateState(PlantState state)
     {
-        if (!projectilePrefab || !firePoint) return;
-        var proj = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
+        plantState = state;
 
-        Vector2 dir = new Vector2(facing, 0.15f).normalized;
+        switch (state)
+        {
+            case PlantState.Idle:
+                animator.Play("PlantIdle");
+                break;
+
+            case PlantState.Attack:
+                animator.Play("PlantAttack");
+                EnemyBullet bullet = Instantiate(enemyBulletPrefab, transform.position, Quaternion.identity);
+                bullet.SetDirection(p.transform.position);
+                plantState = PlantState.Idle;
+                break;
+
+            case PlantState.Dead:
+                animator.Play("PlantDead");
+                gameObject.SetActive(false);
+                break;
+        }
+    }
+    void Start()
+    {
+        p = GameManager.Instance.p;
+        plantState = PlantState.Idle;
+        health = _health;
+    }
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            plantState = PlantState.Attack;
+            p = collision.gameObject.GetComponent<player>();
+            p.TakeDamageP(damage);
+        }
+    }
+
+    public void TakeDamagePlant(int damage)
+    {
+
+        _health -= damage;
+
+        if (_health <= 0f)
+        {
+            plantState = PlantState.Dead;
+        }
     }
 }
