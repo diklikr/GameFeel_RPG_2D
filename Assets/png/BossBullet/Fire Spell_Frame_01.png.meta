@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: f7045cbb94198a44f8b9ab2d45d1fb73
+guid: c1f360e32c4942d4baa325eea9cb5b6f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7571186248405211785
-    second: Item_Powerup_29_0
+      213: 4846352920877607924
+    second: Fire Spell_Frame_01_0
+  - first:
+      213: 3610983919711096775
+    second: Fire Spell_Frame_01_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +49,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -100,13 +103,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Item_Powerup_29_0
+      name: Fire Spell_Frame_01_0
       rect:
         serializedVersion: 2
-        x: 1
-        y: 0
-        width: 74
-        height: 75
+        x: 26
+        y: 56
+        width: 453
+        height: 249
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +118,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7752c7f883ebde690800000000000000
-      internalID: -7571186248405211785
+      spriteID: 4fb2611fd44b14340800000000000000
+      internalID: 4846352920877607924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fire Spell_Frame_01_1
+      rect:
+        serializedVersion: 2
+        x: 452
+        y: 145
+        width: 150
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7cf07004ebacc1230800000000000000
+      internalID: 3610983919711096775
       vertices: []
       indices: 
       edges: []
@@ -125,7 +150,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +160,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Item_Powerup_29_0: -7571186248405211785
+      Fire Spell_Frame_01_0: 4846352920877607924
+      Fire Spell_Frame_01_1: 3610983919711096775
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
