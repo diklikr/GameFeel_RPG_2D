@@ -109,8 +109,13 @@ MonoBehaviour:
   attackDelay: 2
   enemyBulletPrefab: {fileID: 3062629196960234133, guid: 0fa502552a823fd45877ffd7b7f121fc, type: 3}
   contactDamage: 1
-  animator: {fileID: 7384429962480997727}
   firePoint: {fileID: 8553968559446915481}
+  pointA: {fileID: 0}
+  pointB: {fileID: 0}
+  patrolSpeed: 2
+  reachThreshold: 0.1
+  startAtA: 1
+  animator: {fileID: 7384429962480997727}
 --- !u!61 &1900696779733655391
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -205,7 +210,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!1 &8553968559446915481
 GameObject:
   m_ObjectHideFlags: 0

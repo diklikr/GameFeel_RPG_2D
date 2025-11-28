@@ -118,7 +118,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &6504936377838721561
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -199,9 +199,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16c8af3015a59e648877e7d97d8be031, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 1
-  animator: {fileID: 6054281193566035613}
+  maxHealth: 2
+  shootRange: 3
+  attackDelay: 2
   enemyBulletPrefab: {fileID: 3062629196960234133, guid: 0fa502552a823fd45877ffd7b7f121fc, type: 3}
+  contactDamage: 1
+  firePoint: {fileID: 0}
+  animator: {fileID: 6054281193566035613}
 --- !u!1 &6454613225340426283
 GameObject:
   m_ObjectHideFlags: 0

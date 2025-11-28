@@ -103,8 +103,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 925a249e16d6dcc46b64cca521425bb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  detectionRange: 5
   health: 5
-  p: {fileID: 0}
   zState: 0
   animator: {fileID: 2276545354315943393}
   walkSpeed: 2
@@ -181,7 +181,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!95 &2276545354315943393
 Animator:
   serializedVersion: 7

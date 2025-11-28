@@ -39,14 +39,11 @@ public class Fader : MonoBehaviour
 
     public void Fade(bool fadeToBlack)
     {
-        TimeManager.instance.SetTime(1);
         Debug.Log("Fading to " + (fadeToBlack ? "black" : "clear"));
         if (image == null)
         {
             Debug.LogWarning("Fader: No Image assigned.");
-
             SceneManager.LoadScene(sceneToLoad);
-
         }
         float targetValue = fadeToBlack ? 1f : 0f;
         if (fadeToBlack)

@@ -113,6 +113,7 @@ public class player : MonoBehaviour
         lookingDirection = 1f;
         health(_health);
         SoundList.instance.PlaySound("BG");
+        TimeManager.instance.SetTime(1);
     }
 
     void Update()

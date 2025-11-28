@@ -39,17 +39,14 @@ public class Ghost : MonoBehaviour
                     pos.y = baseY + Mathf.Sin(Time.time * floatFrequency) * floatAmplitude;
                     transform.position = pos;
                 }
-                animator.SetBool("GhostWalk", true);
                 break;
 
             case GhostState.Attack:
-                animator.SetTrigger("GhostAttack");
                 player.TakeDamageP(1);
                 UpdateState(GhostState.Walk);
                 break;
 
             case GhostState.Dead:
-                animator.SetTrigger("GhostDead");
                 shake.ShakeCamera();
                 gameObject.SetActive(false);
                 break;
@@ -85,7 +82,7 @@ public class Ghost : MonoBehaviour
                 break;
 
             case GhostState.Walk:
-                animator.Play("GhostWalk");
+                animator.Play("GhostRun");
                 break;
 
             case GhostState.Attack:
