@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,18 +13,29 @@ public class BulletMove : MonoBehaviour
     Crow crow;
     Ghost ghost;
 
+    void OnEnable()
+    {
+        StartCoroutine(AutoDisableAfterTime(1f));
+    }
+
+    void OnDisable()
+    {
+        StopAllCoroutines();
+    }
+
     void Start()
     {
-        // ensure sprite/orientation matches direction
         Vector3 ls = transform.localScale;
         ls.x = Mathf.Abs(ls.x) * direction;
         transform.localScale = ls;
     }
-   public void SetSpeed(float newSpeed)
+
+    public void SetSpeed(float newSpeed)
     {
-                speed = newSpeed;
+        speed = newSpeed;
         Debug.Log("Speed set to: " + newSpeed);
     }
+
     void Update()
     {
         transform.Translate(Vector2.right * speed * Time.deltaTime, Space.Self);
@@ -35,35 +47,40 @@ public class BulletMove : MonoBehaviour
         if (collision.gameObject.CompareTag("Crow"))
         {
             collision.gameObject.TryGetComponent<Crow>(out crow);
-            crow.HPCrow(damage);
-            Destroy();
+            crow?.HPCrow(damage);
+            Deactivate();
+            return;
         }
-       if(collision.gameObject.CompareTag("Ghost"))
-          {
+        if (collision.gameObject.CompareTag("Ghost"))
+        {
             collision.gameObject.TryGetComponent<Ghost>(out ghost);
-            ghost.HPGhost(damage);
-            Destroy();
+            ghost?.HPGhost(damage);
+            Deactivate();
+            return;
         }
-       if(collision.gameObject.CompareTag("Boss"))
+        if (collision.gameObject.CompareTag("Boss"))
         {
-
-            Destroy();
+            collision.gameObject.TryGetComponent<Boss>(out Boss boss);
+            boss?.TakeDamageB(damage);
+            Deactivate();
+            return;
         }
-       if(collision.gameObject.CompareTag("Plant"))
+        if (collision.gameObject.CompareTag("Plant"))
         {
-
-            Destroy();
+            collision.gameObject.TryGetComponent<Plant>(out Plant plant);
+            plant?.TakeDamagePlant(damage);
+            Deactivate();
+            return;
         }
-       if(collision.gameObject.CompareTag("Snake"))
+        if (collision.gameObject.CompareTag("Snake"))
         {
             zombie p;
             p = collision.gameObject.GetComponent<zombie>();
-            p.TakeDamageZ(damage);
-            Destroy();
+            p?.TakeDamageZ(damage);
+            Deactivate();
+            return;
         }
-        
     }
-
 
     public void SetDirection(float dir)
     {
@@ -72,8 +89,15 @@ public class BulletMove : MonoBehaviour
         ls.x = Mathf.Abs(ls.x) * direction;
         transform.localScale = ls;
     }
-   
-    public void Destroy()
+
+    private IEnumerator AutoDisableAfterTime(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        if (gameObject.activeInHierarchy)
+            Deactivate();
+    }
+
+    public void Deactivate()
     {
         gameObject.SetActive(false);
     }

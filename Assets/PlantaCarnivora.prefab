@@ -31,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 7.91, y: -3.98, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7348115149799538496}
@@ -199,11 +199,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16c8af3015a59e648877e7d97d8be031, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 3062629196960234133, guid: 0fa502552a823fd45877ffd7b7f121fc, type: 3}
-  firePoint: {fileID: 1359510596916655181}
-  shootCooldown: 1.2
-  shootRange: 8
-  health: 2
+  health: 1
+  animator: {fileID: 6054281193566035613}
+  enemyBulletPrefab: {fileID: 3062629196960234133, guid: 0fa502552a823fd45877ffd7b7f121fc, type: 3}
 --- !u!1 &6454613225340426283
 GameObject:
   m_ObjectHideFlags: 0

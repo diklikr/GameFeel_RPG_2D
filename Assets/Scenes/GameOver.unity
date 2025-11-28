@@ -280,6 +280,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 1842465987}
   tweenTime: 1
+  delay: 2
+  startFaded: 1
   sceneToLoad: 0
 --- !u!1 &731236192
 GameObject:

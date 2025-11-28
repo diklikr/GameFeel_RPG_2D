@@ -8,6 +8,7 @@ public class Fader : MonoBehaviour
 {
     public Image image;
     public float tweenTime = 1f;
+    public float delay = 1f;
     [SerializeField]
     private bool startFaded = true;
 
@@ -38,6 +39,7 @@ public class Fader : MonoBehaviour
 
     public void Fade(bool fadeToBlack)
     {
+        TimeManager.instance.SetTime(1);
         Debug.Log("Fading to " + (fadeToBlack ? "black" : "clear"));
         if (image == null)
         {
@@ -49,7 +51,7 @@ public class Fader : MonoBehaviour
         float targetValue = fadeToBlack ? 1f : 0f;
         if (fadeToBlack)
         {
-            image.DOFade(targetValue, tweenTime).OnComplete(() =>
+            image.DOFade(targetValue, tweenTime).SetUpdate(true).SetDelay(delay).OnComplete(() =>
              {
                  SceneManager.LoadScene(sceneToLoad);
              });
@@ -57,7 +59,7 @@ public class Fader : MonoBehaviour
         else
         {
             Debug.Log("Time" + tweenTime + " Target" + targetValue);
-            image.DOFade(targetValue, tweenTime).OnComplete(() =>
+            image.DOFade(targetValue, tweenTime).SetUpdate(true).SetDelay(delay).OnComplete(() =>
             {
                 Debug.Log("Fade to clear complete.");
             });

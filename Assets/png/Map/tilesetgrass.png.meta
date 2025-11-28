@@ -134,9 +134,9 @@ TextureImporter:
       name: tilesetgrass_1
       rect:
         serializedVersion: 2
-        x: 0
+        x: 3
         y: 5
-        width: 96
+        width: 91
         height: 27
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -249,7 +249,7 @@ TextureImporter:
         width: 37
         height: 63
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -258,6 +258,28 @@ TextureImporter:
       bones: []
       spriteID: 7301f96f383f7974aaec9aad68f7c314
       internalID: -204495844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tilesetgrass_7
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 5
+        width: 87
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d404d3d6571dab743ac77e6f77b7a7fa
+      internalID: -713827980
       vertices: []
       indices: 
       edges: []
@@ -283,6 +305,7 @@ TextureImporter:
       tilesetgrass_4: 1291585369
       tilesetgrass_5: 1675816520
       tilesetgrass_6: -204495844
+      tilesetgrass_7: -713827980
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

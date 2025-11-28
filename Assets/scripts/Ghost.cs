@@ -81,19 +81,19 @@ public class Ghost : MonoBehaviour
         switch (state)
         {
             case GhostState.Idle:
-                animator.SetBool("GhostWalk", false);
+                animator.Play("GhostIdle");
                 break;
 
             case GhostState.Walk:
-                animator.SetBool("GhostWalk", true);
+                animator.Play("GhostWalk");
                 break;
 
             case GhostState.Attack:
-                animator.SetTrigger("GhostAttack");
+                animator.Play("GhostAttack");
                 break;
 
             case GhostState.Dead:
-                animator.SetTrigger("GhostDead");
+                animator.Play("GhostDead");
                 gameObject.SetActive(false);
                 break;
         }

@@ -1,3 +1,4 @@
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -41,6 +42,12 @@ public class player : MonoBehaviour
         Ballesta
     }
 
+    [SerializeField] private float attackCooldown = 1.2f;
+    [SerializeField] private float shootBoostedCooldown = 0.7f;
+
+    private bool deathStarted = false;
+    private bool canAttack = true;
+
     private void UpdateState(PlayerState state)
     {
         pState = state;
@@ -67,8 +74,6 @@ public class player : MonoBehaviour
                 {
                     if (currentBoost == BoostType.Ballesta)
                     {
-                        
-
                         var left = Instantiate(arrow, transform.position, Quaternion.Euler(0f, 0f, spreadAngle));
                         left.SetSpeed(normalBulletSpeed * lookingDirection);
                         left.SetDirection(lookingDirection);
@@ -115,10 +120,14 @@ public class player : MonoBehaviour
         float h = Input.GetAxisRaw("Horizontal");
         rb.linearVelocity = new Vector2(h * moveSpeed, rb.linearVelocity.y);
         lookingDirection = h != 0 ? Mathf.Sign(h) : lookingDirection;
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+
+        if (Input.GetKeyDown(KeyCode.Mouse0) && canAttack)
         {
             UpdateState(PlayerState.Attack);
+            float cd = currentBoost == BoostType.Shoot ? shootBoostedCooldown : attackCooldown;
+            StartCoroutine(AttackCooldown(cd));
         }
+
         if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
         {
             UpdateState(PlayerState.Jump);
@@ -169,11 +178,30 @@ public class player : MonoBehaviour
         }
         if (_health <= 0)
         {
-            SceneManager.LoadScene(2);
-            UpdateState(PlayerState.Dead);
+            if (!deathStarted)
+            {
+                deathStarted = true;
+                UpdateState(PlayerState.Dead);
+                StartCoroutine(DeathDelay());
+            }
+            return;
         }
         healthUI.HPUI(_health);
     }
+
+    private IEnumerator DeathDelay()
+    {
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene(2);
+    }
+
+    private IEnumerator AttackCooldown(float cooldown)
+    {
+        canAttack = false;
+        yield return new WaitForSeconds(cooldown);
+        canAttack = true;
+    }
+
     bool IsGrounded()
     {
         if (groundCheck == null) return false;

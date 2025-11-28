@@ -19,10 +19,10 @@ TagManager:
   - ground
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
+  - Bullet
+  - Player
+  - EnemyBullet
+  - Boss
   - 
   - 
   - 

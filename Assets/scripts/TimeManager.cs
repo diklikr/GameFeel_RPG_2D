@@ -10,7 +10,9 @@ public class TimeManager : MonoBehaviour
     public CanvasGroup pauseMenu;
     private Tween pauseTween;
     private float pauseTweenTime = 0.5f;
+
     public static TimeManager instance;
+
     private Coroutine freezeFrameCoroutine;
     [SerializeField] private KeyCode pauseKey;
 
@@ -28,6 +30,8 @@ public class TimeManager : MonoBehaviour
     }
     void Start()
     {
+        targetTimescale = 1;
+        gamePaused = false;
         pauseMenu.alpha = 0;
     }
 
@@ -58,11 +62,11 @@ public class TimeManager : MonoBehaviour
         {
             SetTime(0);
             pauseTween = pauseMenu.DOFade(1, pauseTweenTime).SetUpdate(true);
-            pauseMenu.alpha = 1;
+            //pauseMenu.alpha = 1;
         }
         else
         {
-            pauseMenu.alpha = 0;
+            //pauseMenu.alpha = 0;
             pauseTween = pauseMenu.DOFade(0, pauseTweenTime).OnComplete(()=> { SetTime(1); Debug.Log("WAZA"); }).SetUpdate(true);
         }
     }

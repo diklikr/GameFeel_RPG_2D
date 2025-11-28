@@ -12,7 +12,6 @@ public class Crow : MonoBehaviour
     public float flySpeed = 3f;
     public float stopDistance = 0.5f;
     public int health;
-    bool isFound = false;
 
     private void Start()
     {
@@ -80,7 +79,6 @@ public class Crow : MonoBehaviour
             case CrowState.Idle:
                 if (found())
                 {
-                    isFound = true;
                     SetState(CrowState.Walk);
                 }
                 break;
