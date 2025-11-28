@@ -1643,8 +1643,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NoiseProfile: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
   PivotOffset: {x: 0, y: 0, z: 0}
-  AmplitudeGain: 2
-  FrequencyGain: 3
+  AmplitudeGain: 0
+  FrequencyGain: 0
   m_NoiseOffsets: {x: 465.81335, y: -969.7106, z: 787.92163}
 --- !u!1001 &174194802
 PrefabInstance:
@@ -9450,6 +9450,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6193296638431264043, guid: a723bc9fe8c709248aecf782ed6a0f4a, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1924725595}
     - target: {fileID: 6739375819352342799, guid: a723bc9fe8c709248aecf782ed6a0f4a, type: 3}
       propertyPath: m_Name
       value: HealthBoost (2)
@@ -15594,6 +15598,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6193296638431264043, guid: a723bc9fe8c709248aecf782ed6a0f4a, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1924725595}
     - target: {fileID: 6739375819352342799, guid: a723bc9fe8c709248aecf782ed6a0f4a, type: 3}
       propertyPath: m_Name
       value: HealthBoost (3)
